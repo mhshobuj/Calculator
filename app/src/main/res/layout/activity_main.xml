@@ -32,6 +32,7 @@
 
             <Button
                 style="@style/NumberButtonStyle"
+                android:background="#FFEA00"
                 android:text="C"
                 android:id="@+id/cBT"/>
 
@@ -42,14 +43,14 @@
 
             <Button
                 style="@style/NumberButtonStyle"
-                android:text="M"
-                android:id="@+id/mBT"/>
+                android:text="√"
+                android:id="@+id/rootBT"/>
 
             <Button
                 style="@style/NumberButtonStyle"
                 android:text="DEL"
                 android:id="@+id/delBT"
-                android:background="@color/RED400"/>
+                android:background="#FF0000"/>
 
         </LinearLayout>
 
@@ -153,6 +154,7 @@
                 android:id="@+id/pointBT"/>
 
             <Button
+                android:background="#006600"
                 style="@style/NumberButtonStyle"
                 android:text="="
                 android:id="@+id/equalBT"/>

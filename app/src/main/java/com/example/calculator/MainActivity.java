@@ -12,7 +12,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 
 public class MainActivity extends AppCompatActivity {
-    private Button cBT, parcentBT, mBT, delBT, oneBT, twoBT, threeBT, fourBT, fiveBT, sixBT,sevenBT, eightBT,
+    private Button cBT, parcentBT, rootBT, delBT, oneBT, twoBT, threeBT, fourBT, fiveBT, sixBT,sevenBT, eightBT,
             nineBT, zeroBT, pointBT, plusBT, multiplyBT, divisionBT, subtractionBT, equalBT;
 
     private TextView resultTV;
@@ -45,6 +45,27 @@ public class MainActivity extends AppCompatActivity {
                         resultTV.setText(displayElements);
                     }
                 }
+            }
+        });
+        parcentBT.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String screenContent = resultTV.getText().toString();
+                scendNumberIndex = screenContent.length() + 1;
+                firstNumber = Double.parseDouble(screenContent);
+                resultTV.append("%");
+                cal = true;
+                currentOP = '%';
+            }
+        });
+        rootBT.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String screenContent = resultTV.getText().toString();
+                scendNumberIndex = screenContent.length() + 1;
+                resultTV.setText("√");
+                cal = true;
+                currentOP = '√';
             }
         });
         zeroBT.setOnClickListener(new View.OnClickListener() {
@@ -211,6 +232,23 @@ public class MainActivity extends AppCompatActivity {
                         finalResult = firstNumber / secondNumber;
                         resultTV.setText(String.valueOf(finalResult));
                     }
+                    if (currentOP == '%'){
+                        String screenContent = resultTV.getText().toString();
+                        String secondNumberString = screenContent.
+                                substring(scendNumberIndex, screenContent.length());
+                        double secondNumber = Double.parseDouble(secondNumberString);
+                        finalResult = (firstNumber / 100) * secondNumber;
+                        resultTV.setText(String.valueOf(finalResult));
+                    }
+
+                    if (currentOP == '√'){
+                        String screenContent = resultTV.getText().toString();
+                        String secondNumberString = screenContent.
+                                substring(scendNumberIndex, screenContent.length());
+                        double secondNumber = Double.parseDouble(secondNumberString);
+                        finalResult = Math.sqrt(secondNumber);
+                        resultTV.setText(String.valueOf(finalResult));
+                    }
                 }
                 else {
                     Toast.makeText(MainActivity.this, "Please Input Number", Toast.LENGTH_SHORT).show();
@@ -226,7 +264,7 @@ public class MainActivity extends AppCompatActivity {
 
         cBT = findViewById(R.id.cBT);
         parcentBT = findViewById(R.id.parcentBT);
-        mBT = findViewById(R.id.mBT);
+        rootBT = findViewById(R.id.rootBT);
         delBT = findViewById(R.id.delBT);
         oneBT = findViewById(R.id.oneBT);
         twoBT = findViewById(R.id.twoBT);
